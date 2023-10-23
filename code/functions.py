@@ -4,7 +4,7 @@ import msvcrt as keyword
 import os
 import json
 import keyboard as key
-
+from random import *
 
 def setTimeout(ms: float):
     time.sleep(ms)
@@ -238,23 +238,17 @@ def modificarTemp(dato: str, content, path: str, obj: str, newItems: list):
     if isinstance(data[dato], list) is True:
         # para lists de eventos nada mas.
         if dato == "inventario":
-            if len(data[dato]) == 0:
-                # añade los items por primera vez en caso de no tener ningun item
-                for i in range(len(newItems)):
-                    data[dato].append(newItems[i])
-            else:
-                lista_items_existentes = []
-                i = 0
-                for p in data[dato]:
-                    for x in newItems:
-                        if p['nombre'] == x['nombre']:
-                            lista_items_existentes.append(x)
-                print(lista_items_existentes)
+            print()
                 
-    if isinstance(data[dato], object) is True:
+    elif isinstance(data[dato], object) is True:
         # para ingresar datos de un objeto
         data[dato][obj] = data[dato].get(obj) + content
-    
+
+def usoDelItem(item: str, cantidad: int):
+    pass
+
+def randomRange(a, b):
+    return round(uniform(a,b), 2)
 # def main():
 #     registrarUsuario()
 

@@ -3,6 +3,7 @@ import msvcrt as keyb
 import os
 from colorama import *
 import json
+from code.clases import *
 
 def cargarTempDatos():
     with open('./code/temp/currentP.json') as file:
@@ -29,6 +30,8 @@ def mGame():
         print("Sientes que un frio misterioso te rodea y todo a tu alrededor se congela al punto de volverte un tempano", end="")
         puntsus(0.5)
         anyKey2Continue()
+        eve = DarEvento("suenoInicial")
+        eve.registrarEventoTemporal('./code/temp/currentP.json')
     else:
         print("An error just ocurred... There's no player or nor player name have beed registered...")
         setTimeout(3)
