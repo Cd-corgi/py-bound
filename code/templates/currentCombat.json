@@ -1,0 +1,27 @@
+{
+    "player": {
+        "nombre": "",
+        "estadisticas": {
+            "vida": 0,
+            "defensa": 0,
+            "ataque": 0,
+            "nivel": 0
+        }
+    },
+    "mob": {
+        "nombre": "",
+        "tipo": "",
+        "estadisticas": {
+            "vida": 0,
+            "defensa": 0,
+            "ataque": 0,
+            "nivel": 0
+        },
+        "imune": [],
+        "debilidad": [],
+        "recompenza": {
+            "exp": 0,
+            "items": []
+        }
+    }
+}

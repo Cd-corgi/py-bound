@@ -1,0 +1,60 @@
+{
+  "pueblito": [
+    {
+      "nombre": "Cucaracha",
+      "descripcion": "Insectos con la extraña imunidad a lo atómico. Molestosos si vuelan.",
+      "tipo": "común",
+      "estadisticas": {
+        "vida": 10,
+        "defensa": 5,
+        "ataque": 2,
+        "nivel": 1
+      },
+      "imune": ["Petardo Ionico"],
+      "debilidad": ["Insecticida", "Zapato viejo", "Sandalias"],
+      "recompensa": {
+        "exp": 10,
+        "items": []
+      }
+    },
+    {
+      "nombre": "Perro Callejero",
+      "descripcion": "Canino abandonado por personas malas de la cabeza... Pobre de él.",
+      "tipo": "común",
+      "estadisticas": {
+        "vida": 25,
+        "defensa": 5,
+        "ataque": 5,
+        "nivel": 2
+      },
+      "imune": [],
+      "debilidad": ["Huesos de hule", "Croquetas nutritivas", "Palmaditas"],
+      "recompensa": {
+        "exp": 15,
+        "items": [{ "item": "Pelo de perro", "cantidad": 5, "chance": 0.5 }]
+      }
+    },
+    {
+      "nombre": "Roedor Rabioso",
+      "descripcion": "Una rata o ratón que dianbula por el pueblo robando principalmente queso o items.",
+      "tipo": "raro",
+      "estadisticas": {
+        "vida": 12,
+        "defensa": 3,
+        "ataque": 10,
+        "nivel": 2
+      },
+      "imune": ["Vara de madera", "Sandalias"],
+      "debilidad": ["Bomba voltio", "Trampa de queso", "Pegamento industrial"],
+      "recompensa": {
+        "exp": 15,
+        "items": [
+          { "item": "Queso solido", "cantidad": 1, "chance": 0.7 },
+          { "item": "Panecillo endurecido", "cantidad": 2, "chance": 0.4 }
+        ]
+      }
+    }
+  ],
+  "bosque": [],
+  "prado": []
+}

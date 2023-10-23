@@ -1,0 +1,21 @@
+{
+  "nombre": "",
+  "genero": "",
+  "gusto": "",
+  "color": 0,
+  "combate": 1,
+  "inventario": [],
+  "estadistica": {
+    "xp": 0,
+    "limiteXP": 50,
+    "nivel": 1,
+    "ataque": 5,
+    "defensa": 5,
+    "vida": 25
+  },
+  "lugarDeGuardado": {
+    "lugar": "",
+    "zona": ""
+  },
+  "listaDeEventos": []
+}

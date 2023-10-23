@@ -1,0 +1,73 @@
+[
+  {
+    "nombre": "Ana",
+    "rol": "npc",
+    "genero": "ni\u00f1a",
+    "estadisticas": {
+      "ataque": 0,
+      "defensa": 999,
+      "karma": 10
+    },
+    "dialogos": [
+      "{player}, despierta... Despierta, ¿Estás ahi?",
+      "Estás demasiado helado para continuar... ¿Quieres que te de algo?",
+      "{player}, como tu madre, siempre he sabido que te gusta mucho {likes}.",
+      "Eres alguien fuerte, como tu padre. No te rindas.",
+      "Ve y diviertete, recuerda no llegar demasiado tarde a la casa.",
+      "Te amo mi {player}."
+    ],
+    "guardarPartida": [
+      "Te ves cansado, ¿Quieres guardar partida?",
+      "Desde aqui veré tu progreso, {player}. ¿Deseas guardar?"
+    ],
+    "preguntas": [
+      "¿Quieres que te de {likes}?",
+      "¿Quieres ir por mi, a recoger las bayas?",
+      "¿Estás seguro, {player}?"
+    ],
+    "respuestas": {
+      "positivas": ["Está bien.", "Vale.", "Si", "De acuerdo.", "Me mola eso."],
+      "negativas": ["No lo creo.", "No.", "Mejor paso.", "No, gracias."],
+      "neutrales": ["Puede ser, pero...", "No lo sé", "Ya veras tu."]
+    },
+    "eventosCanon": [
+      "sueñoInicial",
+      "ultimoDiaEscuela",
+      "despedidaYRegalo",
+      "pensamiento",
+      "climax"
+    ]
+  },
+  {
+    "nombre": "Carlos",
+    "rol": "npc",
+    "genero": "ni\u00f1o",
+    "estadisticas": {
+      "ataque": 5,
+      "defensa": 25,
+      "karma": 5
+    },
+    "dialogos": [
+      "Oye {player}, ¿No se ve genial que vayamos a terminar la primaria?",
+      "Venga, nos divertiremos mucho llenando los casilleros de ropa apestosa. Los guardé en el salón de gimnasia.",
+      "jaja, no me hagas reir {player}, eres {genero} {generoPalabra-mimar}. No lo ocultes.",
+      "Shh, vigilame las costas, estoy metiendo estos arapos con olor a perro viejo.",
+      "Dame una mano {player}.",
+      "Vamos al parque con rodry y samantha, nos divertiremos un rato para celebrar que nos salvamos de la escuela veraniega.",
+      "Vaya que estamos en un lio grande."
+    ],
+    "preguntas": [
+      "¿Puedes ayudarme a hacer esta broma?",
+      "¿Vas con nosotros {player}?",
+      "¿Estás seguro, {player}?",
+      "¿Sabes un escondite para salvarnos?",
+      "¿Tienes un plan contra ellos {player}?"
+    ],
+    "respuestas": {
+      "positivas": ["Genial, te cubro {generoPalabra-diminutivoPersona}", "Venga, no perdamos el tiempo", "eres {generoPalabra-elElla} mejor"],
+      "negativas": ["No se va a hacer", "Lo siento, no tengo tiempo", "{player}, necesito espacio"],
+      "neutrales": ["Estoy dudoso de ello", "¿Talvez?"]
+    },
+    "eventosCanon": ["ultimoDiaEscuela", "paseoPorElParque", "bosque", "climax"]
+  }
+]
