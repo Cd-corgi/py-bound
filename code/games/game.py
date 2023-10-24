@@ -4,6 +4,7 @@ import os
 from colorama import *
 import json
 from code.clases import *
+from code.stages.maps import *
 
 def cargarTempDatos():
     with open('./code/temp/currentP.json') as file:
@@ -11,7 +12,10 @@ def cargarTempDatos():
     return data
 
 def dreaming(playerData):
-    return
+    if playerData["listaDeEventos"][-1] == "suenoInicial":
+        yes = EscenarioSueno(playerData)
+        anyKey2Continue()
+    exit(0)
     
 def mGame():
     os.system("cls")
@@ -32,6 +36,11 @@ def mGame():
         anyKey2Continue()
         eve = DarEvento("suenoInicial")
         eve.registrarEventoTemporal('./code/temp/currentP.json')
+        newDat = cargarTempDatos()
+        dreaming(newDat)
+        os.system("cls")
+        if newDat["listaDeEventos"][-1] == "suenoInicial":
+            dreaming(newDat)
     else:
         print("An error just ocurred... There's no player or nor player name have beed registered...")
         setTimeout(3)

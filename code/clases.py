@@ -107,3 +107,35 @@ class DarEvento:
             else:
                 i += 1
         pass
+
+
+class DetectarNombrePascua:
+    def __init__(self, nombre: str):
+        self.nombre = nombre
+
+    def concedirPascua(self):
+        name = self.nombre.lower()
+        if name == "Nauj".lower():
+            print("Sin duda alguna es alguien temible. . .")
+        elif name == "Gigas".lower():
+            print("La personificación del odio. . . Entendible.")
+        elif name == "Bitspark".lower():
+            print("¡EL CAOS REPRESENTADA POR UNA CABRA!")
+        elif name == "King".lower():
+            print("¿Acaso te asusta un fan de pokémon?")
+        elif name == "Python".lower():
+            print("Eres parte de mi codigo. . .")
+        elif name == "Zero".lower():
+            print("Ese nombre no lo menciones aqui. . .")
+        elif name == "Gatekeeper".lower():
+            print("Este protocolo jamás fue dado para el creador. . .")
+        elif name == "Shao".lower():
+            print("No metas a Liu Kang en esto. . .")
+        elif name == "Zoe".lower():
+            print("La dulce cara para uno pero es peligrosa si se le da un arma. . .")
+        elif name == "Shanon".lower():
+            print("La encarnación de la maldad, es dulce. . .")
+        elif name == "Cor".lower():
+            print("¡NO MENCIONES ESA FACETA!")
+        elif name == "Corgi".lower():
+            print("Es un viejo conocido... No tan frecuete.")

@@ -4,7 +4,7 @@ import msvcrt
 from colorama import *
 import os
 from code.functions import *
-from code.game.game import *
+from code.games.game import *
 init()
 
 ########################################################
