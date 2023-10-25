@@ -6,8 +6,11 @@ import os
 from code.functions import *
 from code.games.game import *
 init()
-tempPath = './code/temp/currentP.json'
 
+
+##### global variables #####
+
+tempPath = './code/temp/currentP.json'
 
 ########################################################
 def main():

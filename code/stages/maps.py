@@ -4,6 +4,8 @@ from code.functions import *
 from code.clases import *
 from main import tempPath
 
+# primer escenario
+
 
 class EscenarioSueno:
     def __init__(self, playerData: object):
@@ -63,6 +65,12 @@ class EscenarioSueno:
         anyKey2Continue()
         eve = DarEvento("introduccion")
         eve.registrarEventoTemporal(tempPath)
-        
-        
-        
+
+# segundo escenario
+
+class EscenarioCasa:
+    def __init__(self, playerData: object):
+        self.playerData = playerData
+    
+    def EleccionRutas(self):
+        pass
