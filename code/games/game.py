@@ -6,6 +6,7 @@ import json
 from code.clases import *
 from code.stages.maps import *
 
+
 def cargarTempDatos():
     with open('./code/temp/currentP.json') as file:
         data = json.load(file)
@@ -14,6 +15,7 @@ def cargarTempDatos():
 def dreaming(playerData):
     if playerData["listaDeEventos"][-1] == "suenoInicial":
         yes = EscenarioSueno(playerData)
+        yes.AvanzarRuta()
         anyKey2Continue()
     exit(0)
     

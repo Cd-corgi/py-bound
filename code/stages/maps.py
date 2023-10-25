@@ -2,6 +2,7 @@ import os
 import json
 from code.functions import *
 from code.clases import *
+from main import tempPath
 
 
 class EscenarioSueno:
@@ -17,8 +18,9 @@ class EscenarioSueno:
         self.idx = 0
 
     def AvanzarRuta(self):
+        anyKey2Continue()
         while self.idx < len(self.escenarios):
-            if self.idx - 1 == len(self.escenarios):
+            if self.idx == len(self.escenarios) - 1:
                 print(self.escenarios[-1])
                 choice = str(input("\n>>> "))
                 setTimeout(0.5)
@@ -41,9 +43,26 @@ class EscenarioSueno:
                     NR = DetectarNombrePascua(choice)
                     NR.concedirPascua()
                     anyKey2Continue()
+                    self.idx = 999
+                    break
                 else:
                     print("Hmm... Entiendo.")
                     anyKey2Continue()
             print(self.escenarios[self.idx])
+            setTimeout(1.5)
             anyKey2Continue()
             self.idx += 1
+        setTimeout(3.5)
+        print("Entonces, si crees que soy lo que le temes... Rindete, o sufre las consecuencias.")
+        anyKey2Continue()
+        setTimeout(3.5)
+        print("¡DESPIERTA YA!")
+        anyKey2Continue()
+        setTimeout(5.2)
+        print("De la nada ese bosque se torna tan brillante como la ventana de una mañana soleada de un otoño. Te acabas de despertar.")
+        anyKey2Continue()
+        eve = DarEvento("introduccion")
+        eve.registrarEventoTemporal(tempPath)
+        
+        
+        

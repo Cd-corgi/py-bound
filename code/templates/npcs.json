@@ -11,6 +11,8 @@
     "dialogos": [
       "{player}, despierta... Despierta, ¿Estás ahi?",
       "Estás demasiado helado para continuar... ¿Quieres que te de algo?",
+      "Finalmente estás {generoPalabra-despertar}. No sabes cuanto tiempo me tomo despertarte...",
+      "{player}... Tienes tu ultimo dia en la escuela. Recoje tus cosas de tu casillero antes de regresar a casa.",
       "{player}, como tu madre, siempre he sabido que te gusta mucho {likes}.",
       "Eres alguien fuerte, como tu padre. No te rindas.",
       "Ve y diviertete, recuerda no llegar demasiado tarde a la casa.",

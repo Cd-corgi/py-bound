@@ -6,9 +6,12 @@ import os
 from code.functions import *
 from code.games.game import *
 init()
+tempPath = './code/temp/currentP.json'
+
 
 ########################################################
 def main():
+    global tempPath
     os.system("cls")
     print(Back.WHITE + Fore.BLUE + "Corgi presents...\n\n\n")
     print(Back.WHITE + """Para solo con el fin de programar sin tener que usar a mano propia el uso de Pygame. Cada vez que haga una update, meteré mas cositas.""")
