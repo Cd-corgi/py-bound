@@ -5,15 +5,23 @@ from colorama import *
 import os
 from code.functions import *
 from code.games.game import *
+from db.connection import *
+import pymongo
+from dotenv import *
 init()
 
 
 ##### global variables #####
 
 tempPath = './code/temp/currentP.json'
+load_dotenv()
+databaseUrl = os.getenv('MONGO_CON')
+client = establecerConexion(databaseUrl)
+db = client.test
 
 ########################################################
 def main():
+    global db
     global tempPath
     os.system("cls")
     print(Back.WHITE + Fore.BLUE + "Corgi presents...\n\n\n")

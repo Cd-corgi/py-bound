@@ -3,3 +3,4 @@ player.json
 currentP.json
 prueba.py
 __pycache__/
+.env

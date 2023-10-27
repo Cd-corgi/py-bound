@@ -2,7 +2,7 @@ import os
 import json
 from code.functions import *
 from code.clases import *
-from main import tempPath
+import main 
 
 # primer escenario
 
@@ -64,7 +64,8 @@ class EscenarioSueno:
         print("De la nada ese bosque se torna tan brillante como la ventana de una mañana soleada de un otoño. Te acabas de despertar.")
         anyKey2Continue()
         eve = DarEvento("introduccion")
-        eve.registrarEventoTemporal(tempPath)
+        eve.registrarEventoTemporal(main.tempPath)
+        
 
 # segundo escenario
 
