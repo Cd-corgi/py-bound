@@ -1,9 +1,0 @@
-{
-    "nombre": "Corgi",
-    "genero": "niño",
-    "gusto": "coding",
-    "color": 1,
-    "inventario": [],
-    "estadistica": {"xp": 0, "limiteXP": 50, "nivel": 1},
-    "listaDeEventos": []
-}

@@ -1,10 +1,10 @@
-from code.functions import *
 import msvcrt as keyb
 import os
 from colorama import *
 import json
 from code.clases import *
 from code.stages.maps import *
+import code.functions as contar
 
 
 def cargarTempDatos():
@@ -16,26 +16,26 @@ def dreaming(playerData):
     if playerData["listaDeEventos"][-1] == "suenoInicial":
         yes = EscenarioSueno(playerData)
         yes.AvanzarRuta()
-        anyKey2Continue()
+        contar.anyKey2Continue()
     exit(0)
     
 def mGame():
     os.system("cls")
     if os.path.isfile('./code/temp/currentP.json'):
         dat = cargarTempDatos()
-        npc = loadNPCDialog('Ana', 0)
+        n = contar.loadNPCDialog('Ana', 0)
         i = 0
         while i < 2:
-            print(npc["dialogos"][i].replace("{player}", dat["nombre"]).replace("{likes}", dat["gusto"]))
+            print(n["dialogos"][i].replace("{player}", dat["nombre"]).replace("{likes}", dat["gusto"]))
             i += 1
         i = 0
-        setTimeout(0.3)
-        anyKey2Continue()
+        contar.setTimeout(0.3)
+        contar.anyKey2Continue()
         os.system("cls")
-        setTimeout(0.5)
+        contar.setTimeout(0.5)
         print("Sientes que un frio misterioso te rodea y todo a tu alrededor se congela al punto de volverte un tempano", end="")
-        puntsus(0.5)
-        anyKey2Continue()
+        contar.puntsus(0.5)
+        contar.anyKey2Continue()
         eve = DarEvento("suenoInicial")
         eve.registrarEventoTemporal('./code/temp/currentP.json')
         newDat = cargarTempDatos()

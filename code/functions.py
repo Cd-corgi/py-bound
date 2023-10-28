@@ -263,11 +263,11 @@ def randomRange(a, b):
     return round(uniform(a,b), 2)
 
 def guardarPlayer(datos: object):
-    dd["player"]
+    col = dd["player"]
     schem = Pschema(datos)
     print(schem)
     try:
-        dd.insert_one(schem)
+        col.insert_one(schem)
     except Exception as e:
         print(e)
 # def main():

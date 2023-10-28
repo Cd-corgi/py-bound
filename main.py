@@ -4,7 +4,7 @@ import msvcrt
 from colorama import *
 import os
 from code.functions import *
-from code.games.game import *
+from code.games.game import mGame
 from db.connection import *
 import pymongo
 from dotenv import *
