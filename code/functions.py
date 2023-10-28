@@ -5,6 +5,8 @@ import os
 import json
 import keyboard as key
 from random import *
+from db.schemas.player import Pschema
+from main import dd
 
 def setTimeout(ms: float):
     time.sleep(ms)
@@ -18,11 +20,20 @@ def anyKey2Continue():
 
 
 def DetectarSiHayPartida():
-    rutaDePartida = './db/player.json'
-    if os.path.isfile(rutaDePartida):
+    coleccion = dd["player"]
+    consulta = coleccion.find({})
+    indexes = []
+    for i in consulta:
+        indexes.append(i)
+    if len(indexes) > 0:
         return True
     else:
         return False
+    # rutaDePartida = './db/player.json'
+    # if os.path.isfile(rutaDePartida):
+    #     return True
+    # else:
+    #     return False
 
 
 def modificarDatos(dato: str, content, path: str):
@@ -158,8 +169,9 @@ def registrarUsuario():
                     os.system("cls")
                     print("Creando partida... Espere un momento.")
                     setTimeout(5)
-                    with open('./db/player.json', 'w') as d:
-                        data = json.dump(datos, d)
+                    guardarPlayer(datos)
+                    # with open('./db/player.json', 'w') as d:
+                    #     data = json.dump(datos, d)
                     os.system("cls")
                     print("¡Partida creada y guardada!")
                     with open('./code/temp/currentP.json', 'w') as pr:
@@ -249,6 +261,15 @@ def usoDelItem(item: str, cantidad: int):
 
 def randomRange(a, b):
     return round(uniform(a,b), 2)
+
+def guardarPlayer(datos: object):
+    dd["player"]
+    schem = Pschema(datos)
+    print(schem)
+    try:
+        dd.insert_one(schem)
+    except Exception as e:
+        print(e)
 # def main():
 #     registrarUsuario()
 

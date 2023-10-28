@@ -17,11 +17,13 @@ tempPath = './code/temp/currentP.json'
 load_dotenv()
 databaseUrl = os.getenv('MONGO_CON')
 client = establecerConexion(databaseUrl)
-db = client.test
+dd = client.test
 
 ########################################################
+
+
 def main():
-    global db
+    global dd
     global tempPath
     os.system("cls")
     print(Back.WHITE + Fore.BLUE + "Corgi presents...\n\n\n")
@@ -44,7 +46,9 @@ def main():
             if continuar == True:
                 print(
                     "\n\nTienes una partida existente en la app. Tus datos anteriores fueron borrados\n\n")
-                os.remove('./db/player.json')
+                borrarDato = dd["player"].find({})
+                for enc in borrarDato:
+                    dd["player"].delete_one(enc)
             anyKey2Continue()
             registrarUsuario()
             mGame()
@@ -60,7 +64,7 @@ def main():
                     partidaCargada = cargarDatos()
                     custom = cargarColor(partidaCargada["color"])
                     print(custom + "Datos de la partida guardada:", "\n#########################################################", "\nNombre: ",
-                        partidaCargada["nombre"], "\nGenero: ", partidaCargada["genero"], "\nNivel: ", partidaCargada["estadistica"].get("nivel"))
+                          partidaCargada["nombre"], "\nGenero: ", partidaCargada["genero"], "\nNivel: ", partidaCargada["estadistica"].get("nivel"))
                     print(
                         """\n\n[1] Cargar | [2] Borrar | [3] Cambiar Colores | [9] Atras\n"""
                     )
@@ -138,7 +142,8 @@ def main():
                         anyKey2Continue()
             else:
                 os.system("cls")
-                print("No tienes una partida existente... Deberás crear una partida nueva.")
+                print(
+                    "No tienes una partida existente... Deberás crear una partida nueva.")
                 msvcrt.getwch()
                 eleccion = 0
                 os.system("cls")
@@ -147,6 +152,7 @@ def main():
             os.system("exit()")
         else:
             os.system("cls")
+
 
 if __name__ == '__main__':
     main()

@@ -1,31 +1,24 @@
-import pymongo
-import os
-import json
-
-def Pschema():
+def Pschema(data: object):
     PlayerSchema = {
-        "name": {'type': 'string'},
-        "genero": {'type': 'string'},
-        "gusto": {'type': 'string'},
-        "color": {'type': 'int'},
-        "combate": {'type': 'int'},
-        "inventario": [{
-            "nombre": {'type': 'string'},
-            "cantidad": {'type': 'int'}
-        }],
+        "name": data["nombre"],
+        "genero": data["genero"],
+        "gusto": data["gusto"],
+        "color": data["color"],
+        "combate": data["combate"],
+        "inventario": [],
         "estadistica": {
-            "xp": { 'type': 'int', 'default': 0 },
-            "limiteXP": { 'type': 'int', 'default': 50 },
-            "nivel": { 'type': 'int', 'default': 1 },
-            "ataque": { 'type': 'int', 'default': 5 },
-            "defensa": { 'type': 'int', 'default': 5 },
-            "vida": { 'type': 'int', 'default': 25 },
+            "xp": 0,
+            "limiteXP": 50,
+            "nivel": 1,
+            "ataque": 5,
+            "defensa": 5,
+            "vida": 25,
         },
         "lugarDeGuardado": {
-            "lugar": { 'type': 'string' },
-            "zona": { 'type': 'string' },
+            "lugar": "",
+            "zona": "",
         },
-        "listaDeEventos": [{}]
+        "listaDeEventos": []
     }
     
     return PlayerSchema
