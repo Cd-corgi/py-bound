@@ -20,7 +20,6 @@ class EscenarioSueno:
         self.idx = 0
 
     def AvanzarRuta(self):
-        m.anyKey2Continue()
         while self.idx < len(self.escenarios):
             if self.idx == len(self.escenarios) - 1:
                 print(self.escenarios[-1])
@@ -49,7 +48,7 @@ class EscenarioSueno:
                     break
                 else:
                     print("Hmm... Entiendo.")
-                    anyKey2Continue()
+                    m.anyKey2Continue()
             print(self.escenarios[self.idx])
             m.setTimeout(1.5)
             m.anyKey2Continue()
