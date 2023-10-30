@@ -247,12 +247,12 @@ def loadNPCDialog(char: str, charPos: int):
 def RemplazarPalabras(wordPath: str, string: str, playerG: str):
     with open(wordPath, 'r') as file:
         data = json.load(file)
-    if playerG == 'niña':
+    if playerG == 'female':
         for o in data["female"]:
-            string = string.replace(o, o["female"][o])
+            string = str(string.replace(o, data["female"][o]))
     else:
         for o in data["male"]:
-            string = string.replace(o, o["male"][o])
+            string = str(string.replace(o, data["male"][o]))
     return string
 
 

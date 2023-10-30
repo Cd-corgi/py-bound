@@ -2,7 +2,8 @@ import os
 import json
 import code.functions as m
 from code.clases import *
-import main 
+import code.games.game as si
+import main
 
 # primer escenario
 
@@ -64,7 +65,7 @@ class EscenarioSueno:
         m.anyKey2Continue()
         eve = DarEvento("introduccion")
         eve.registrarEventoTemporal(main.tempPath)
-        
+
 
 # segundo escenario
 
@@ -72,10 +73,18 @@ class EscenarioCasa:
     def __init__(self, playerData: object):
         self.playerData = playerData
         self.dialogo = [
-            "",
+            "Estás en tu habitación... Ves a tu alrededor y notas que el dia está calido para iniciar tu rutina diaria.\n\nTomas tu {generoPalabra-ropaje}, Equipas tus ultimos libros del dia de escuela y bajas a la cocina...",
             "",
             ""
         ]
-    
+
     def EleccionRutas(self):
+        data = si.cargarTempDatos()
+        se = ""
+        if data["genero"] == "niño":
+            se = "male"
+        else:
+            se = "female"
+        print(m.RemplazarPalabras(main.wordPath, self.dialogo[0], se))
+        exit(0)
         pass

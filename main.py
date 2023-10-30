@@ -14,6 +14,7 @@ init()
 ##### global variables #####
 
 tempPath = './code/temp/currentP.json'
+wordPath = './code/templates/genreWords.json'
 load_dotenv()
 databaseUrl = os.getenv('MONGO_CON')
 client = establecerConexion(databaseUrl)
@@ -24,6 +25,7 @@ dd = client.test
 
 def main():
     global dd
+    global wordPath
     global tempPath
     os.system("cls")
     print(Back.WHITE + Fore.BLUE + "Corgi presents...\n\n\n")
