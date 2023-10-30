@@ -8,6 +8,7 @@ from random import *
 from db.schemas.player import Pschema
 from main import dd
 
+
 def setTimeout(ms: float):
     time.sleep(ms)
 
@@ -243,24 +244,21 @@ def loadNPCDialog(char: str, charPos: int):
     return data[charPos]
 
 
-def modificarTemp(dato: str, content, path: str, obj: str, newItems: list):
-    with open(path) as file:
-        data = json.open(file)
+def RemplazarPalabras(wordPath: str, string: str, playerG: str):
+    with open(wordPath, 'r') as file:
+        data = json.load(file)
+    if playerG == 'niña':
+        for o in data["female"]:
+            string = string.replace(o, o["female"][o])
+    else:
+        for o in data["male"]:
+            string = string.replace(o, o["male"][o])
+    return string
 
-    if isinstance(data[dato], list) is True:
-        # para lists de eventos nada mas.
-        if dato == "inventario":
-            print()
-                
-    elif isinstance(data[dato], object) is True:
-        # para ingresar datos de un objeto
-        data[dato][obj] = data[dato].get(obj) + content
-
-def usoDelItem(item: str, cantidad: int):
-    pass
 
 def randomRange(a, b):
-    return round(uniform(a,b), 2)
+    return round(uniform(a, b), 2)
+
 
 def guardarPlayer(datos: object):
     col = dd["player"]
@@ -270,8 +268,3 @@ def guardarPlayer(datos: object):
         col.insert_one(schem)
     except Exception as e:
         print(e)
-# def main():
-#     registrarUsuario()
-
-
-# main()

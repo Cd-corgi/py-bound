@@ -71,6 +71,11 @@ class EscenarioSueno:
 class EscenarioCasa:
     def __init__(self, playerData: object):
         self.playerData = playerData
+        self.dialogo = [
+            "",
+            "",
+            ""
+        ]
     
     def EleccionRutas(self):
         pass

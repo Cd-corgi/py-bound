@@ -1,14 +1,16 @@
 {
-  "male": [
-    { "generoPalabra-mimar": "mimado" },
-    { "generoPalabra-diminutivoPersona": "chaval" },
-    { "generoPalabra-elElla": "el" },
-    { "generoPalabra-despertar": "despierto" }
-  ],
-  "female": [
-    { "generoPalabra-mimar": "mimada" },
-    { "generoPalabra-diminutivoPersona": "chavala" },
-    { "generoPalabra-elElla": "la" },
-    { "generoPalabra-despertar": "despierta" }
-  ]
+  "male": {
+    "generoPalabra-mimar": "mimado",
+    "generoPalabra-diminutivoPersona": "chaval",
+    "generoPalabra-elElla": "el",
+    "generoPalabra-despertar": "despierto",
+    "generoPalabra-distraer": "distraido"
+  },
+  "female": {
+    "generoPalabra-mimar": "mimada",
+    "generoPalabra-diminutivoPersona": "chavala",
+    "generoPalabra-elElla": "la",
+    "generoPalabra-despertar": "despierta",
+    "generoPalabra-distraer": "distraida"
+  }
 }
