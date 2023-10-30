@@ -37,19 +37,18 @@ def DetectarSiHayPartida():
     #     return False
 
 
-def modificarDatos(dato: str, content, path: str):
+def modificarDatos(dato: str, content):
     try:
-        with open(path, 'r') as f:
-            data = json.load(f)
-
-        data[dato] = content
-
-        with open(path, 'w') as f:
-            json.dump(data, f)
-        pass
+        col = dd["player"]
+        re = col.find({})
+        for i in re:
+            i[dato] = content
+            up = col.update_one({"nombre": i["nombre"]}, { "$set": { dato: content } })
+            break
+        return True
     except Exception as e:
         print("Un error ha ocurrido... ", e)
-        os.system("exit()")
+        exit(0)
         pass
 
 
@@ -212,8 +211,10 @@ def cargarColor(color: int):
 
 
 def cargarDatos():
-    with open('./db/player.json') as profile:
-        data = json.load(profile)
+    collection = dd["player"]
+    search = collection.find({})
+    for i in search:
+        data = i
     return data
 
 

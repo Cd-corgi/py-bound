@@ -75,7 +75,8 @@ def main():
                         os.system("exit()")
                     elif elegir == 2:
                         os.system("cls")
-                        os.remove('./db/player.json')
+                        col = dd["player"]
+                        col.delete_one({ "nombre": partidaCargada["nombre"] })
                         print("Tu partida fue borrada...")
                         anyKey2Continue()
                         eleccion = 0
@@ -84,15 +85,13 @@ def main():
                         eleColor = 9
                         while eleColor != 1 and eleColor != 2 and eleColor != 3 and eleColor != 4 and eleColor != 0:
                             os.system("cls")
-                            path = './db/player.json'
-                            dato = 'color'
                             print(
                                 "Elija una opción para cambiar el color:\n\n[1] Azul\n[2] Verde\n[3] Rojo\n[4] Negro\n[0] Cancelar\n")
                             eleColor = int(input(">>> "))
                             if eleColor == 1:
                                 os.system("cls")
                                 print("Cambiando el color...")
-                                modificarDatos(dato, eleColor, path)
+                                modificarDatos("color", eleColor)
                                 setTimeout(3)
                                 os.system("cls")
                                 print(
@@ -102,7 +101,7 @@ def main():
                             elif eleColor == 2:
                                 os.system("cls")
                                 print("Cambiando el color...")
-                                modificarDatos(dato, eleColor, path)
+                                modificarDatos("color", eleColor)
                                 setTimeout(3)
                                 os.system("cls")
                                 print(
@@ -112,7 +111,7 @@ def main():
                             elif eleColor == 3:
                                 os.system("cls")
                                 print("Cambiando el color...")
-                                modificarDatos(dato, eleColor, path)
+                                modificarDatos("color", eleColor)
                                 setTimeout(3)
                                 os.system("cls")
                                 print(
@@ -122,7 +121,7 @@ def main():
                             elif eleColor == 4:
                                 os.system("cls")
                                 print("Cambiando el color...")
-                                modificarDatos(dato, eleColor, path)
+                                modificarDatos("color", eleColor)
                                 setTimeout(3)
                                 os.system("cls")
                                 print(

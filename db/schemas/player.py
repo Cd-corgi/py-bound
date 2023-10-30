@@ -1,6 +1,6 @@
 def Pschema(data: object):
     PlayerSchema = {
-        "name": data["nombre"],
+        "nombre": data["nombre"],
         "genero": data["genero"],
         "gusto": data["gusto"],
         "color": data["color"],
