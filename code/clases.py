@@ -77,8 +77,6 @@ class ItemsDeInventario:
                     j = json.dump(data, f)
                 break
 
-# Añadiendo mas clases en breve
-
 
 class DarEvento:
     def __init__(self, evento: str):
