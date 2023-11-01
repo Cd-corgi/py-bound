@@ -145,61 +145,85 @@ class GuardarPartida:
         self.tempDatos = tempDatos
 
     def compararDatos(self):
+        # Declaramos desde main y llamamos su collecion "player"
         consult = main.dd["player"]
+        # Variables de objects para comparar (Vaya a linea 165)
         datosDeLaDb = {}
         datosDeTemp = {}
+        # Hacemos una consulta general a mongoDB para que nos de un cursor de todos los datos de la coleccion player
         datosdb = consult.find({"nombre": self.tempDatos["nombre"]})
+        # En caso de haber encontrado un dato, busca y itera por cada objeto
         for i in datosdb:
+            # Por cada objeto encontrado, iterará por sus atributos
             for x in i:
+                # Metemos a las variables excepto el atributo "_id"
                 if x != "_id":
                     datosDeLaDb[x] = i[x]
+        # Iteramos los datos temporales y lo añadimos a su objeto para comparar
         for x in self.tempDatos:
             datosDeTemp[x] = self.tempDatos[x]
+        # Compara si el objeto temporal y el objeto de la db si tienen los mismos datos.
         if datosDeTemp == datosDeLaDb:
+            # En caso de que sea True, guarda directamente. . .
             os.system("cls")
             print("Guardando ...")
             m.setTimeout(3.0)
             try:
+                # recorre desde un FOR para actualizar cada atributo del documento
                 for x in datosDeTemp:
                     consult.update_one({"nombre": datosDeTemp[x]}, {
                                        "$set": {x: datosDeTemp[x]}})
+                # Listo, aqui termina en caso de que sean iguales los datos a guardar
                 os.system("cls")
                 print("¡Partida Guardada!")
                 m.anyKey2Continue()
             except Exception as e:
+                # Tira una excepcion en caso de que haya un error.
                 raise print("Error en la DB: ", e)
         else:
+            # Entra aqui en caso de que no sean iguales los datos temporales con la DB
             text = ""
+            # While para recorrer en caso que no quiera sobreescribir y elije ninguna de las 2 opciones.
             while text.lower() != "s" and text.lower() != "n" and len(text) == 0:
+                # Advierte el usuario al querer sobreescribir.
                 print(
                     "Tienes datos existente en nuestro sistema...\n\n¿Desea sobreescribir el progreso?")
                 text = str(input("\n>>> "))
+                # Condicionamos la elección.
                 if text.lower() == "s":
                     os.system("cls")
                     print("Guardando ...")
+                    # Iteramos el dato temporal para actualizar los datos de la db
                     for x in datosDeTemp:
                         consult.update_one({"nombre": datosDeTemp["nombre"]}, {
                                            "$set": {x: datosDeTemp[x]}})
+                    # Termina la sobreescritura de los datos...
                     m.setTimeout(3.0)
                     os.system("cls")
                     print("¡Datos Guardados!")
                     m.anyKey2Continue()
                 elif text.lower() == "n":
+                    # En caso de no querer sobreescribir. Te advierte que quieres continuar sin guardar.
                     text2 = ""
+                    # Un while aislado para dejar a conocer si quiere o no continuar.
                     while text2.lower() != "s" and text2.lower() != "n":
                         os.system("cls")
                         print("¿Estás segur@? S/N")
                         text2 = str(input("\n>>> "))
+                        # Si dice que si, termina aqui y continua.
                         if text2 == "S" or text2 == "s":
                             os.system("cls")
                             text = "n"
+                        # En caso de negarse, vuelve a preguntar para sobreescribir la partida.
                         elif text2 == "N" or text2 == "n":
                             text = ""
                             os.system("cls")
+                        # Su opcion invalida hace repetir esta desicion
                         else:
                             os.system("cls")
                             print("Elección no valida ...")
                             m.anyKey2Continue()
+                # Si no elige un Si o un No, repite el aviso a sobreescribir.
                 else:
                     os.system("cls")
                     print("Elección no valida ...")
