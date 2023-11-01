@@ -50,6 +50,8 @@ class EscenarioSueno:
                 else:
                     print("Hmm... Entiendo.")
                     m.anyKey2Continue()
+                    self.idx = 999
+                    break
             print(self.escenarios[self.idx])
             m.setTimeout(1.5)
             m.anyKey2Continue()
@@ -74,17 +76,34 @@ class EscenarioCasa:
         self.playerData = playerData
         self.dialogo = [
             "Estás en tu habitación... Ves a tu alrededor y notas que el dia está calido para iniciar tu rutina diaria.\n\nTomas tu {generoPalabra-ropaje}, Equipas tus ultimos libros del dia de escuela y bajas a la cocina...",
-            "",
-            ""
+            "Bajas a la cocina y tu mamá {0}, te prepara el desayuno preguntandote.",
         ]
 
     def EleccionRutas(self):
         data = si.cargarTempDatos()
+        ndata = m.loadNPCData(0)
+        i = 0
         se = ""
         if data["genero"] == "niño":
             se = "male"
         else:
             se = "female"
-        print(m.RemplazarPalabras(main.wordPath, self.dialogo[0], se))
-        exit(0)
-        pass
+
+        while i < len(self.dialogo):
+            if i == 1:
+                print(self.dialogo[i].replace('{0}', ndata["nombre"]))
+                m.setTimeout(3.5)
+                print("\n", m.RemplazarPalabras(main.wordPath, ndata["dialogos"][2], se))
+                m.anyKey2Continue()
+                print(m.RemplazarPalabras(main.wordPath, ndata["dialogos"][3], se).replace('{player}', self.playerData["nombre"]))
+                m.setTimeout(3.0)
+                print("Sientes algo de comodidad al desayunar con tu mamá... La comida tiene ese toque especial que queras vivir su sabor cada vez que reposas...")
+                m.setTimeout(3.0)
+                os.system("cls")
+                guardar = GuardarPartida(data)
+                guardar.compararDatos()
+                pass
+            print(m.RemplazarPalabras(main.wordPath, self.dialogo[i], se))
+            m.setTimeout(2.5)
+            m.anyKey2Continue()
+            i += 1

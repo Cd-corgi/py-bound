@@ -26,7 +26,6 @@ def dreaming(playerData):
     if playerData["listaDeEventos"][-1] == "suenoInicial":
         yes = EscenarioSueno(playerData)
         yes.AvanzarRuta()
-        contar.anyKey2Continue()
         newPD = cargarTempDatos()
         intro(newPD)
     else:
@@ -61,6 +60,6 @@ def mGame():
             dreaming(newDat)
     else:
         print("An error just ocurred... There's no player or nor player name have beed registered...")
-        setTimeout(3)
+        m.setTimeout(3)
         os.system("exit()")
     return

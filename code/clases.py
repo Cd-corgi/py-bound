@@ -1,6 +1,7 @@
 import os
 import json
-from code.functions import *
+import code.functions as m
+import main
 
 
 class ItemsDeInventario:
@@ -51,9 +52,9 @@ class ItemsDeInventario:
                     tenerItem["cantidad"] = 0
                     data[objeto].remove(tenerItem)
                 print("Usas ", self.nombre, ". . .")
-                setTimeout(1.5)
+                m.setTimeout(1.5)
                 os.system("cls")
-                usoDelItem(self.nombre, self.cantidad)
+                m.usoDelItem(self.nombre, self.cantidad)
                 with open(path, 'w') as f:
                     j = json.dump(data, f)
                 break
@@ -139,3 +140,70 @@ class DetectarNombrePascua:
             print("¡NO MENCIONES ESA FACETA!")
         elif name == "Corgi".lower():
             print("Es un viejo conocido... No tan frecuete.")
+
+
+class GuardarPartida:
+    def __init__(self, tempDatos: object):
+        self.tempDatos = tempDatos
+
+    def compararDatos(self):
+        consult = main.dd["player"]
+        datosDeLaDb = {}
+        datosDeTemp = {}
+        datosdb = consult.find({"nombre": self.tempDatos["nombre"]})
+        for i in datosdb:
+            for x in i:
+                if x != "_id":
+                    datosDeLaDb[x] = i[x]
+        for x in self.tempDatos:
+            datosDeTemp[x] = self.tempDatos[x]
+        if datosDeTemp == datosDeLaDb:
+            os.system("cls")
+            print("Guardando ...")
+            m.setTimeout(3.0)
+            try:
+                for x in datosDeTemp:
+                    consult.update_one({"nombre": datosDeTemp[x]}, {
+                                       "$set": {x: datosDeTemp[x]}})
+                os.system("cls")
+                print("¡Partida Guardada!")
+                m.anyKey2Continue()
+            except Exception as e:
+                raise print("Error en la DB: ", e)
+        else:
+            text = ""
+            while text.lower() != "s" and text.lower() != "n" and len(text) == 0:
+                print(
+                    "Tienes datos existente en nuestro sistema...\n\n¿Desea sobreescribir el progreso?")
+                text = str(input("\n>>> "))
+                if text.lower() == "s":
+                    os.system("cls")
+                    print("Guardando ...")
+                    for x in datosDeTemp:
+                        consult.update_one({"nombre": datosDeTemp["nombre"]}, {
+                                           "$set": {x: datosDeTemp[x]}})
+                    m.setTimeout(3.0)
+                    os.system("cls")
+                    print("¡Datos Guardados!")
+                    m.anyKey2Continue()
+                elif text.lower() == "n":
+                    text2 = ""
+                    while text2.lower() != "s" and text2.lower() != "n":
+                        os.system("cls")
+                        print("¿Estás segur@? S/N")
+                        text2 = str(input("\n>>> "))
+                        if text2 == "S" or text2 == "s":
+                            os.system("cls")
+                            text = "n"
+                        elif text2 == "N" or text2 == "n":
+                            text = ""
+                            os.system("cls")
+                        else:
+                            os.system("cls")
+                            print("Elección no valida ...")
+                            m.anyKey2Continue()
+                else:
+                    os.system("cls")
+                    print("Elección no valida ...")
+                    text = ""
+                    m.anyKey2Continue()

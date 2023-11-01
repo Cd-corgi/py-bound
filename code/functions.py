@@ -43,7 +43,8 @@ def modificarDatos(dato: str, content):
         re = col.find({})
         for i in re:
             i[dato] = content
-            up = col.update_one({"nombre": i["nombre"]}, { "$set": { dato: content } })
+            up = col.update_one({"nombre": i["nombre"]}, {
+                                "$set": {dato: content}})
             break
         return True
     except Exception as e:
@@ -269,3 +270,9 @@ def guardarPlayer(datos: object):
         col.insert_one(schem)
     except Exception as e:
         print(e)
+
+
+def loadNPCData(pos: int):
+    with open('./code/templates/npcs.json') as f:
+        data = json.load(f)
+    return data[pos]
