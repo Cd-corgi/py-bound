@@ -130,10 +130,6 @@ class DetectarNombrePascua:
             print("Este protocolo jamás fue dado para el creador. . .")
         elif name == "Shao".lower():
             print("No metas a Liu Kang en esto. . .")
-        elif name == "Zoe".lower():
-            print("La dulce cara para uno pero es peligrosa si se le da un arma. . .")
-        elif name == "Shanon".lower():
-            print("La encarnación de la maldad, es dulce. . .")
         elif name == "Cor".lower():
             print("¡NO MENCIONES ESA FACETA!")
         elif name == "Corgi".lower():

@@ -36,8 +36,6 @@ class EscenarioSueno:
                     "Zero",
                     "Gatekeeper",
                     "Shao",
-                    "Zoe",
-                    "Shanon",
                     "Cor",
                     "Corgi"
                 ]
