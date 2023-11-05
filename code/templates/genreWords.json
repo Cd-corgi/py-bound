@@ -5,7 +5,8 @@
     "{generoPalabra-elElla}": "el",
     "{generoPalabra-despertar}": "despierto",
     "{generoPalabra-distraer}": "distraido",
-    "{generoPalabra-ropaje}": "bermuda"
+    "{generoPalabra-ropaje}": "bermuda",
+    "{generoPalabra-listo}": "listo"
   },
   "female": {
     "{generoPalabra-mimar}": "mimada",
@@ -13,6 +14,7 @@
     "{generoPalabra-elElla}": "la",
     "{generoPalabra-despertar}": "despierta",
     "{generoPalabra-distraer}": "distraida",
-    "{generoPalabra-ropaje}": "vestido"
+    "{generoPalabra-ropaje}": "vestido",
+    "{generoPalabra-listo}": "lista"
   }
 }

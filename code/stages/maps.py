@@ -76,6 +76,20 @@ class EscenarioCasa:
             "Estás en tu habitación... Ves a tu alrededor y notas que el dia está calido para iniciar tu rutina diaria.\n\nTomas tu {generoPalabra-ropaje}, Equipas tus ultimos libros del dia de escuela y bajas a la cocina...",
             "Bajas a la cocina y tu mamá {0}, te prepara el desayuno preguntandote.",
         ]
+        self.eventos = [
+            "Vas a la sala, un lugar algo espacioso... Hay puertas donde te llevan a varios lugares de la misma.\n¿A donde irás?",
+            "Te dirijes al patio. Supongo que quieres ir a visitar al granero... O saludar a un compañero",
+            "Vuelves a tu habitación. No se por que volveras pero ahí vas",
+            "Bajas al sotano. Revisas algunas cajas, te aburres y retornas a la sala.",
+            "Retomas tu rumbo tomando tu morral y estás {generoPalabra-listo} para ir a la escuela.",
+            ""
+        ]
+        self.vias = [
+            "",
+            "",
+            "",
+            ""
+        ]
 
     def EleccionRutas(self):
         data = si.cargarTempDatos()
@@ -100,6 +114,8 @@ class EscenarioCasa:
                 os.system("cls")
                 guardar = GuardarPartida(data)
                 guardar.compararDatos()
+                i += 1
+            elif i == 2:
                 pass
             print(m.RemplazarPalabras(main.wordPath, self.dialogo[i], se))
             m.setTimeout(2.5)

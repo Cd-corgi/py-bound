@@ -2,6 +2,12 @@
 player.json
 currentP.json
 prueba.py
+bk.zip
+Gr4D1u5.zip
 __pycache__/
 .env
 schemaTest.py
+/code/files/emu/NES/*.exe
+/code/files/emu/NES/*.ini
+/code/files/emu/NES/*.vlp
+/code/files/emu/NES/*/
