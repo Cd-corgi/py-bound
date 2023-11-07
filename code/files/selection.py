@@ -7,14 +7,16 @@ pp = main.tempPath
 
 
 class CheckPlyName:
-    def __init__(self, nPlayer: str):
+    def __init__(self, nPlayer: str, pPath: str):
         self.nPlayer = nPlayer
 
     def ConfirmName(self):
+        with open(pp, 'r') as f:
+            data = json.load(f)
         if self.nPlayer == "B.I.T.S" or self.nPlayer.lower() == "b.i.t.s":
-            with open(pp, 'r') as f:
-                data = json.load(f)
             data["inventario"].append(
                 {"nombre": "Caja con pantalla", "cantidad": 1})
-            with open(pp, 'w') as f:
-                data = json.dump(f)
+            return data["inventario"]
+        else:
+            data["inventario"] = []
+            return data["inventario"]

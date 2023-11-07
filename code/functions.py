@@ -7,6 +7,7 @@ import keyboard as key
 from random import *
 from db.schemas.player import Pschema
 from main import dd
+from code.files.selection import *
 
 
 def setTimeout(ms: float):
@@ -82,7 +83,13 @@ def registrarUsuario():
                 os.system("cls")
             else:
                 datos["nombre"] = Texto
-
+                recoNombre = CheckPlyName(
+                    datos["nombre"],  './code/templates/playerTemplate.json')
+                yes = recoNombre.ConfirmName()
+                if len(yes) > 0:
+                    datos["inventario"].append(recoNombre.ConfirmName()[0])
+                else:
+                    datos["inventario"] = []
         os.system("cls")
         i += 1
 
@@ -168,6 +175,8 @@ def registrarUsuario():
                 if Texto == 'S':
                     terminado = True
                     os.system("cls")
+                    print(datos)
+                    anyKey2Continue()
                     print("Creando partida... Espere un momento.")
                     setTimeout(5)
                     guardarPlayer(datos)
@@ -265,7 +274,7 @@ def randomRange(a, b):
 def guardarPlayer(datos: object):
     col = dd["player"]
     schem = Pschema(datos)
-    print(schem)
+    # print(schem)
     try:
         col.insert_one(schem)
     except Exception as e:

@@ -76,11 +76,10 @@ def main():
                     elif elegir == 2:
                         os.system("cls")
                         col = dd["player"]
-                        col.delete_one({ "nombre": partidaCargada["nombre"] })
                         print("Tu partida fue borrada...")
                         anyKey2Continue()
                         eleccion = 0
-                        break
+                        col.delete_one({ "nombre": partidaCargada["nombre"] })
                     elif elegir == 3:
                         eleColor = 9
                         while eleColor != 1 and eleColor != 2 and eleColor != 3 and eleColor != 4 and eleColor != 0:

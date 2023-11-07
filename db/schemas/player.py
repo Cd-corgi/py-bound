@@ -5,7 +5,7 @@ def Pschema(data: object):
         "gusto": data["gusto"],
         "color": data["color"],
         "combate": data["combate"],
-        "inventario": [],
+        "inventario": data["inventario"],
         "estadistica": {
             "xp": 0,
             "limiteXP": 50,
