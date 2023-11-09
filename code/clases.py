@@ -257,7 +257,7 @@ class ProcesarEleccion:
                     m.anyKey2Continue()
             if self.choice == 3:
                 datos = {
-                    'Item\t': [],
+                    'Item': [],
                     'Cantidad': []
                 }
                 for items in self.dataPlayer["inventario"]:
