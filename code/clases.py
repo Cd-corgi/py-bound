@@ -2,6 +2,8 @@ import os
 import json
 import code.functions as m
 import main
+import pandas
+from code.files.selection import EasterEgg
 
 
 class ItemsDeInventario:
@@ -225,3 +227,48 @@ class GuardarPartida:
                     print("Elección no valida ...")
                     text = ""
                     m.anyKey2Continue()
+
+class ProcesarEleccion:
+    def __init__(self, ese: str, dataPlayer: object, choice: int):
+        self.dataPlayer = dataPlayer
+        self.ese = ese
+        self.choice = choice
+    def darElecciones(self):
+        if self.ese == "casa":
+            if self.choice == 1:
+                pass
+            if self.choice == 2:
+                os.system("cls")
+                ply = self.dataPlayer["nombre"]
+                print(f"¿Quieres decir algo, {ply}?")
+                decir = str(input("\n>>> "))
+                if len(decir) == 0 or not decir:
+                    os.system("cls")
+                    print("Entonces prefieres ahorrarlo para déspues...")
+                    m.anyKey2Continue()
+                    return
+                elif decir == "start" and self.dataPlayer["nombre"] == "b.i.t.s":
+                    print("Decides usar tu \"Caja con pantalla\" para intentar entretenerte un rato...\nLa Caja con pantalla empieza a mostrar contenido...")
+                    m.setTimeout(3.5)
+                    ae = EasterEgg(self.dataPlayer)
+                    ae.ExecuteGame()
+                else:
+                    print(f"Acabas de decir \"{decir}\"... Nadie nota tu opinión...")
+                    m.anyKey2Continue()
+            if self.choice == 3:
+                datos = {
+                    'Item\t': [],
+                    'Cantidad': []
+                }
+                for items in self.dataPlayer["inventario"]:
+                    datos["Item"].append(items["nombre"])
+                    datos["Cantidad"].append(items["cantidad"])
+                os.system("cls")
+                df = pandas.DataFrame(datos)
+                pandas.set_option('display.max_columns', None)
+                pandas.set_option("colheader_justify", "left")
+                print(f"Inventario de {ply}")
+                print("===========================================")
+                print(df)
+                m.anyKey2Continue()
+                return

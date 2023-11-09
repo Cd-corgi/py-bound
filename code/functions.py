@@ -175,8 +175,6 @@ def registrarUsuario():
                 if Texto == 'S':
                     terminado = True
                     os.system("cls")
-                    print(datos)
-                    anyKey2Continue()
                     print("Creando partida... Espere un momento.")
                     setTimeout(5)
                     guardarPlayer(datos)

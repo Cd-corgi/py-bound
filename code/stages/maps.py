@@ -77,21 +77,16 @@ class EscenarioCasa:
             "Bajas a la cocina y tu mamá {0}, te prepara el desayuno preguntandote.",
         ]
         self.eventos = [
-            "Vas a la sala, un lugar algo espacioso... Hay puertas donde te llevan a varios lugares de la misma.\n¿A donde irás?",
+            "Vas a la sala, un lugar algo espacioso... Hay puertas donde te llevan a varios lugares de la misma.\n¿A donde irás o harás?",
             "Te dirijes al patio. Supongo que quieres ir a visitar al granero... O saludar a un compañero",
             "Vuelves a tu habitación. No se por que volveras pero ahí vas",
             "Bajas al sotano. Revisas algunas cajas, te aburres y retornas a la sala.",
             "Retomas tu rumbo tomando tu morral y estás {generoPalabra-listo} para ir a la escuela.",
-            ""
         ]
-        self.vias = [
-            "",
-            "",
-            "",
-            ""
-        ]
+        self.elecciones = ["Explorar", "Hablar", "Inventario", "Opciones"]
 
     def EleccionRutas(self):
+        ese = "casa"
         data = si.cargarTempDatos()
         ndata = m.loadNPCData(0)
         i = 0
@@ -100,24 +95,48 @@ class EscenarioCasa:
             se = "male"
         else:
             se = "female"
-
         while i < len(self.dialogo):
             if i == 1:
                 print(self.dialogo[i].replace('{0}', ndata["nombre"]))
                 m.setTimeout(3.5)
-                print("\n", m.RemplazarPalabras(main.wordPath, ndata["dialogos"][2], se))
+                print("\n", m.RemplazarPalabras(
+                    main.wordPath, ndata["dialogos"][2], se))
                 m.anyKey2Continue()
-                print(m.RemplazarPalabras(main.wordPath, ndata["dialogos"][3], se).replace('{player}', self.playerData["nombre"]))
+                print(m.RemplazarPalabras(main.wordPath, ndata["dialogos"][3], se).replace(
+                    '{player}', self.playerData["nombre"]))
                 m.setTimeout(3.0)
                 print("Sientes algo de comodidad al desayunar con tu mamá... La comida tiene ese toque especial que queras vivir su sabor cada vez que reposas...")
                 m.setTimeout(3.0)
                 os.system("cls")
                 guardar = GuardarPartida(data)
                 guardar.compararDatos()
+                i = 999
+            else:
+                print(m.RemplazarPalabras(main.wordPath, self.dialogo[i], se))
+                m.setTimeout(2.5)
+                m.anyKey2Continue()
                 i += 1
-            elif i == 2:
+        i = 0
+        while self.eventos.index(self.eventos[i]) != 4:
+            print(self.eventos[i])
+            m.setTimeout(3.5)
+            print("[1] Explorar\n[2] Hablar\n[3] Inventario\n[4] Opciones")
+            elec = int(input("\n>>> "))
+            if elec == 1:
                 pass
-            print(m.RemplazarPalabras(main.wordPath, self.dialogo[i], se))
-            m.setTimeout(2.5)
+            if elec == 2:
+                os.system("cls")
+                sis = ProcesarEleccion(ese, self.playerData, elec)
+                sis.darElecciones()
+            if elec == 3:
+                if len(self.playerData["inventario"]) > 0:
+                    sis = ProcesarEleccion(ese, self.playerData, elec)
+                    sis.darElecciones()
+                else:
+                    os.system("cls")
+                    print("Al parecer tu mochila anda vacia... Intenta obtener algo.")
+                    m.anyKey2Continue()
+        else:
             m.anyKey2Continue()
-            i += 1
+            exit(0)
+            pass
