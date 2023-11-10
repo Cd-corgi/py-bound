@@ -7,7 +7,6 @@ import main
 
 # primer escenario
 
-
 class EscenarioSueno:
     def __init__(self, playerData: object):
         self.playerData = playerData
@@ -66,7 +65,6 @@ class EscenarioSueno:
         eve = DarEvento("introduccion")
         eve.registrarEventoTemporal(main.tempPath)
 
-
 # segundo escenario
 
 class EscenarioCasa:
@@ -108,7 +106,7 @@ class EscenarioCasa:
                 print("Sientes algo de comodidad al desayunar con tu mamá... La comida tiene ese toque especial que queras vivir su sabor cada vez que reposas...")
                 m.setTimeout(3.0)
                 os.system("cls")
-                guardar = GuardarPartida(data)
+                guardar = GuardarPartida(data, ese, None)
                 guardar.compararDatos()
                 i = 999
             else:
@@ -136,7 +134,12 @@ class EscenarioCasa:
                     os.system("cls")
                     print("Al parecer tu mochila anda vacia... Intenta obtener algo.")
                     m.anyKey2Continue()
+            if elec == 4:
+                sis = ProcesarEleccion(ese, self.playerData, elec)
+                sis.darElecciones()
         else:
             m.anyKey2Continue()
             exit(0)
             pass
+
+# tercer escenario

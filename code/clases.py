@@ -139,12 +139,18 @@ class DetectarNombrePascua:
 
 
 class GuardarPartida:
-    def __init__(self, tempDatos: object):
+    def __init__(self, tempDatos: object, stage: str, zone: str):
         self.tempDatos = tempDatos
+        self.stage = stage
+        self.zone = zone
 
     def compararDatos(self):
         # Declaramos desde main y llamamos su collecion "player"
         consult = main.dd["player"]
+        # Damos el lugar y/o zona de guardado
+        self.tempDatos["lugarDeGuardado"]["lugar"] = self.stage
+        if self.zone is not None:
+            self.tempDatos["lugarDeGuardado"]["zona"] = self.zone
         # Variables de objects para comparar (Vaya a linea 165)
         datosDeLaDb = {}
         datosDeTemp = {}
@@ -195,6 +201,19 @@ class GuardarPartida:
                     for x in datosDeTemp:
                         consult.update_one({"nombre": datosDeTemp["nombre"]}, {
                                            "$set": {x: datosDeTemp[x]}})
+                    # Borra el viejo estado
+                    os.remove(main.tempPath)
+                    # Busca el jugador apenas guardado
+                    yes = consult.find({})
+                    # Actualiza el temporal
+                    nuevoT = {}
+                    for i in yes:
+                        for s in i:
+                            if s != "_id":
+                                nuevoT[s] = i[s]
+                                print(s)
+                    with open(main.tempPath, 'w') as f:
+                        data = json.dump(nuevoT, f)
                     # Termina la sobreescritura de los datos...
                     m.setTimeout(3.0)
                     os.system("cls")
@@ -228,11 +247,13 @@ class GuardarPartida:
                     text = ""
                     m.anyKey2Continue()
 
+
 class ProcesarEleccion:
     def __init__(self, ese: str, dataPlayer: object, choice: int):
         self.dataPlayer = dataPlayer
         self.ese = ese
         self.choice = choice
+
     def darElecciones(self):
         if self.ese == "casa":
             if self.choice == 1:
@@ -253,7 +274,8 @@ class ProcesarEleccion:
                     ae = EasterEgg(self.dataPlayer)
                     ae.ExecuteGame()
                 else:
-                    print(f"Acabas de decir \"{decir}\"... Nadie nota tu opinión...")
+                    print(
+                        f"Acabas de decir \"{decir}\"... Nadie nota tu opinión...")
                     m.anyKey2Continue()
             if self.choice == 3:
                 datos = {
@@ -262,13 +284,36 @@ class ProcesarEleccion:
                 }
                 for items in self.dataPlayer["inventario"]:
                     datos["Item"].append(items["nombre"])
-                    datos["Cantidad"].append(items["cantidad"])
+                    datos["Cantidad"].append(f'x {items["cantidad"]}')
                 os.system("cls")
                 df = pandas.DataFrame(datos)
                 pandas.set_option('display.max_columns', None)
                 pandas.set_option("colheader_justify", "left")
+                pandas.set_option("large_repr", "info")
+                ply = self.dataPlayer["nombre"]
+                df = df.map(lambda x: str(x).ljust(21))
                 print(f"Inventario de {ply}")
                 print("===========================================")
                 print(df)
+                print("===========================================")
                 m.anyKey2Continue()
                 return
+            if self.choice == 4:
+                exit(0)
+
+
+class CargarPartida:
+    def __init__(self, partida: object, temp: str):
+        self.partida = partida
+        self.temp = temp
+
+    def RecargarDatos(self):
+        if os.path.isfile(self.temp):
+            os.remove(self.temp)
+            with open(self.temp, 'w') as f:
+                data = json.dump(self.partida, f)
+        else:
+            with open(self.temp, 'w') as f:
+                data = json.dump(self.partida, f)
+
+        pass

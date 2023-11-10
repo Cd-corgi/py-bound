@@ -41,7 +41,10 @@ def main():
         continuar = DetectarSiHayPartida()
         dialogo = "\nElija una opción:\n\n1. Nueva Partida\n2. Cargar Partida\n9. Salir\n\n"
         print(dialogo)
-        eleccion = int(input(">>> "))
+        eleccion = input(">>> ")
+        if eleccion == '' or not eleccion or eleccion is None:
+            eleccion = 0
+        eleccion = int(eleccion)
         if eleccion == 1:
             os.system("cls")
             print("Pero primero tendremos que saber... ¿Quíen eres?\n\n")
@@ -137,6 +140,9 @@ def main():
                         os.system("cls")
                         eleccion = 0
                         break
+                    elif not elegir or len(elegir) == 0:
+                        print("Elección no valida... Reintente.")
+                        anyKey2Continue()
                     else:
                         print("Elección no valida... Reintente.")
                         anyKey2Continue()
