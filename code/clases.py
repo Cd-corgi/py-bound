@@ -211,7 +211,6 @@ class GuardarPartida:
                         for s in i:
                             if s != "_id":
                                 nuevoT[s] = i[s]
-                                print(s)
                     with open(main.tempPath, 'w') as f:
                         data = json.dump(nuevoT, f)
                     # Termina la sobreescritura de los datos...
