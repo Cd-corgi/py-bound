@@ -4,6 +4,7 @@ import msvcrt
 from colorama import *
 import os
 from code.functions import *
+from code.clases import *
 from code.games.game import mGame
 from db.connection import *
 import pymongo
@@ -75,7 +76,16 @@ def main():
                     )
                     elegir = int(input(">>> "))
                     if elegir == 1:
-                        os.system("exit()")
+                        os.system("cls")
+                        print("Cargando Progreso...")
+                        rr = frasesRandom()
+                        print(f"\n {rr}")
+                        setTimeout(3.5)
+                        part = CargarPartida(partidaCargada, tempPath)
+                        os.system("cls")
+                        print("Partida Cargada!")
+                        anyKey2Continue()
+                        part.ponerSuEvento()
                     elif elegir == 2:
                         os.system("cls")
                         col = dd["player"]

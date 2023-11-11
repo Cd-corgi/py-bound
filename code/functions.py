@@ -51,7 +51,6 @@ def modificarDatos(dato: str, content):
     except Exception as e:
         print("Un error ha ocurrido... ", e)
         exit(0)
-        pass
 
 
 def registrarUsuario():
@@ -283,3 +282,26 @@ def loadNPCData(pos: int):
     with open('./code/templates/npcs.json') as f:
         data = json.load(f)
     return data[pos]
+
+def frasesRandom():
+    frases = [
+        "¿Sabias que una cabra verde siempre está en la zona de juegos? Está usando su caos.",
+        "¿Eres realmente cuerdo en exponer tu vida por una baya? Es tu caso mi estimado.",
+        "FOTOSINTESIS",
+        "Nunca confies en una cabra montesa... Son locas.",
+        "Recuerda desinstalar Leage of Legends.",
+        "Pro tip: Da 'enter' para ir interactuando.",
+        "\"La baya magica es una mentira\"",
+        "BLEEE~ \"DaKuNi\"",
+        "Nintendo no sabe que tengo gradius en su codigo... Shh",
+        "Para desbloquear el modo grafico, paga unos 5 dolares... Apoyame.",
+        "朝日からその文化にインスピレーションを受けて…無理に伝承を残さないでください",
+        "Eres un grandisimo puñetas...",
+        "Sparkles estubo aqui... No se lo digas a Bitspark",
+        "Silksong es real",
+        "Earthbound es mi adicción.",
+        "Aqui no hay Elles o Ellxs... Se lo que nacistes, no lo niegues carajo.",
+        "MAKAROV"
+    ]
+    
+    return frases[int(uniform(0, (len(frases) - 1)))]

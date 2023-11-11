@@ -4,6 +4,7 @@ import code.functions as m
 import main
 import pandas
 from code.files.selection import EasterEgg
+from code.stages.prepararEventos import *
 
 
 class ItemsDeInventario:
@@ -306,13 +307,14 @@ class CargarPartida:
         self.partida = partida
         self.temp = temp
 
-    def RecargarDatos(self):
+    def ponerSuEvento(self):
+        # Detecta si está el archivo temporal
         if os.path.isfile(self.temp):
-            os.remove(self.temp)
-            with open(self.temp, 'w') as f:
-                data = json.dump(self.partida, f)
+            with open(self.temp, 'r') as f:
+                data = json.load(f)
         else:
-            with open(self.temp, 'w') as f:
+            with open(self.temp, 'r') as f:
                 data = json.dump(self.partida, f)
-
-        pass
+                
+        deteZona = DetectarZonaGuardado(data)
+        deteZona.DetecZona()

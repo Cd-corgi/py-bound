@@ -3,7 +3,7 @@ import os
 from colorama import *
 import json
 from code.clases import *
-from code.stages.maps import *
+import code.stages.maps as c
 import code.functions as contar
 
 
@@ -14,7 +14,7 @@ def cargarTempDatos():
 
 def intro(playerData):
     if playerData["listaDeEventos"][-1] == "introduccion":
-        epi1 = EscenarioCasa(playerData)
+        epi1 = c.EscenarioCasa(playerData)
         epi1.EleccionRutas()
         contar.anyKey2Continue()
     else:
@@ -24,7 +24,7 @@ def intro(playerData):
 
 def dreaming(playerData):
     if playerData["listaDeEventos"][-1] == "suenoInicial":
-        yes = EscenarioSueno(playerData)
+        yes = c.EscenarioSueno(playerData)
         yes.AvanzarRuta()
         newPD = cargarTempDatos()
         intro(newPD)
@@ -51,7 +51,7 @@ def mGame():
         print("Sientes que un frio misterioso te rodea y todo a tu alrededor se congela al punto de volverte un tempano", end="")
         contar.puntsus(0.5)
         contar.anyKey2Continue()
-        eve = DarEvento("suenoInicial")
+        eve = c.DarEvento("suenoInicial")
         eve.registrarEventoTemporal('./code/temp/currentP.json')
         newDat = cargarTempDatos()
         dreaming(newDat)
@@ -60,6 +60,6 @@ def mGame():
             dreaming(newDat)
     else:
         print("An error just ocurred... There's no player or nor player name have beed registered...")
-        m.setTimeout(3)
+        contar.setTimeout(3)
         os.system("exit()")
     return

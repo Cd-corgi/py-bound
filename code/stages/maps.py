@@ -1,7 +1,7 @@
 import os
 import json
 import code.functions as m
-from code.clases import *
+import code.clases as c
 import code.games.game as si
 import main
 
@@ -39,7 +39,7 @@ class EscenarioSueno:
                     "Corgi"
                 ]
                 if choice in nombresReservados:
-                    NR = DetectarNombrePascua(choice)
+                    NR = c.DetectarNombrePascua(choice)
                     NR.concedirPascua()
                     m.anyKey2Continue()
                     self.idx = 999
@@ -62,7 +62,7 @@ class EscenarioSueno:
         m.setTimeout(5.2)
         print("De la nada ese bosque se torna tan brillante como la ventana de una mañana soleada de un otoño. Te acabas de despertar.")
         m.anyKey2Continue()
-        eve = DarEvento("introduccion")
+        eve = c.DarEvento("introduccion")
         eve.registrarEventoTemporal(main.tempPath)
 
 # segundo escenario
@@ -106,7 +106,7 @@ class EscenarioCasa:
                 print("Sientes algo de comodidad al desayunar con tu mamá... La comida tiene ese toque especial que queras vivir su sabor cada vez que reposas...")
                 m.setTimeout(3.0)
                 os.system("cls")
-                guardar = GuardarPartida(data, ese, None)
+                guardar = c.GuardarPartida(data, ese, None)
                 guardar.compararDatos()
                 i = 999
             else:
@@ -124,18 +124,18 @@ class EscenarioCasa:
                 pass
             if elec == 2:
                 os.system("cls")
-                sis = ProcesarEleccion(ese, self.playerData, elec)
+                sis = c.ProcesarEleccion(ese, self.playerData, elec)
                 sis.darElecciones()
             if elec == 3:
                 if len(self.playerData["inventario"]) > 0:
-                    sis = ProcesarEleccion(ese, self.playerData, elec)
+                    sis = c.ProcesarEleccion(ese, self.playerData, elec)
                     sis.darElecciones()
                 else:
                     os.system("cls")
                     print("Al parecer tu mochila anda vacia... Intenta obtener algo.")
                     m.anyKey2Continue()
             if elec == 4:
-                sis = ProcesarEleccion(ese, self.playerData, elec)
+                sis = c.ProcesarEleccion(ese, self.playerData, elec)
                 sis.darElecciones()
         else:
             m.anyKey2Continue()
