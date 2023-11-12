@@ -310,11 +310,24 @@ class CargarPartida:
     def ponerSuEvento(self):
         # Detecta si está el archivo temporal
         if os.path.isfile(self.temp):
+            # Borra el estado anterior para crear uno partida base a la de la base de datos.
+            os.remove(self.temp)
+            with open(self.temp, 'w') as f:
+                d = {}
+                for i in self.partida:
+                    if i != "_id":
+                        d[i] = self.partida[i]
+                data = json.dump(d, f)
+            with open(self.temp, 'r') as f:
+                data = json.load(f)  
+        else:
+            with open(self.temp, 'w') as f:
+                d = {}
+                for i in self.partida:
+                    if i != "_id":
+                        d[i] = self.partida[i]
+                data = json.dump(d, f)
             with open(self.temp, 'r') as f:
                 data = json.load(f)
-        else:
-            with open(self.temp, 'r') as f:
-                data = json.dump(self.partida, f)
-                
         deteZona = DetectarZonaGuardado(data)
         deteZona.DetecZona()

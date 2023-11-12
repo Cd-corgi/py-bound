@@ -12,7 +12,7 @@ class DetectarZonaGuardado:
         self.playerData = playerData
     
     def DetecZona(self):
-        if not self.playerData["lugarDeGuardado"]["lugar"] or len(self.playerData["lugarDeGuardado"]["lugar"]) == 0 and len(self.playerData["listaDeEventos"]) == 0:
+        if not self.playerData["lugarDeGuardado"]["lugar"] or len(self.playerData["lugarDeGuardado"]["lugar"]) is None and len(self.playerData["listaDeEventos"]) < 1:
             eve = cl.DarEvento("suenoInicial")
             eve.registrarEventoTemporal(c.tempPath)
             curPly = cargarTempDatos()
