@@ -1,0 +1,129 @@
+[
+  {
+    "item": "Rama",
+    "descripcion": "Una varita de madera aleatoriamente ramificada.\nUtil para dañar a tus enemigos, de un solo uso.",
+    "usable-cantidad": false,
+    "stats": {
+      "ataque": 15,
+      "precision": 10
+    },
+    "usable": true,
+    "categoria": ["arma"],
+    "frases": {
+      "usando": "Usas tu Rama, hace un sonido referente al desafiar al viento",
+      "fallido": "El enemigo esquiva la Rama y por el impulso tu ramita se destruye",
+      "exito": "Impactas a tu oponente con la Rama, sientes como su piel contraerse al dolor"
+    },
+    "estado": "La Rama se quiebra por el impacto..."
+  },
+  {
+    "item": "Petardo Ionico",
+    "descripcion": "Bola de masa redonda que con el impacto causa un fogonazo por la reacción ionica.",
+    "usable-cantidad": false,
+    "stats": {
+      "ataque": 40,
+      "precision": 999
+    },
+    "efectivo": ["robot", "golems"],
+    "usable": true,
+    "categoria": ["arma"],
+    "frases": {
+      "usando": "Lanzas el petardo Ionico"
+    },
+    "estado": "El petardo Ionico explota causando estallidos molestos a los enemigos."
+  },
+  {
+    "item": "Sandalias",
+    "descripcion": "Calzado abierto perfecto para convivir con temperaturas altas...\nUsado temidamente por tu madre.",
+    "usable-cantidad": false,
+    "stats": {
+      "ataque": 45,
+      "precision": 40
+    },
+    "usable": true,
+    "categoria": ["arma"],
+    "frases": {
+      "usando": "De tu mochila sacas una Sandalia, lo usas contra tu oponente...",
+      "fallido": "No puedes manejar la fuerza que tu madre, la sandalia no logra impactar..."
+    },
+    "estado": "La sandalia cae al suelo con fuerza, tus traumas de latino te rehusa en levantarlo."
+  },
+  {
+    "item": "Huesos de hule",
+    "descripcion": "Juego de huesitos de hule, perfectos para un perro.",
+    "usable-cantidad": false,
+    "stats": {
+      "ataque": 0,
+      "precision": 0
+    },
+    "efectivo": ["caninos"],
+    "usable": true,
+    "categoria": ["juguete"],
+    "frases": {
+      "usando": "Le muestras el hueso de juguete de manera pechoncha.",
+      "dando": "Le ofreces el juguete a tu oponente intentando persuadirlo.",
+      "exito": "Exitosamente acepta tu juguete como muestra de cariño. Te deja en paz.",
+      "fallido": "No te percatas que no es un perro, quedas como un {generoPalabra-tonto}"
+    }
+  },
+  {
+    "item": "Croquetas nutritivas",
+    "descripcion": "Alimento para animal que dan vitaminas que ayudan a su crecimiento.\n(Si te lo comes, posiblemente te cure un poco)",
+    "usable-cantidad": false,
+    "stats": {
+      "ataque": 0,
+      "precision": 0,
+      "puntos-sanable": {
+        "min": 5,
+        "max": 20
+      }
+    },
+    "efectivo": ["caninos", "felinos"],
+    "usable": true,
+    "categoria": ["consumible", "recurso"],
+    "frases": {
+      "usando": "¿Realmente haras algo con esas croquetas?",
+      "sanarte": "Consumes tus croquetas nutritivas... En caso de emergencia. Recuperas algo de tu salud.",
+      "dando": "Le brindas algo de croquetas, se acerca para ver y oler un poco.",
+      "fallido": "No es un animal para que le des croquetas, quedas en ridiculo...",
+      "exito": "Se come las croquetas gentilmente y se queda apaciguado y te deja ir..."
+    }
+  },
+  {
+    "item": "Bomba Voltio",
+    "descripcion": "Pequeña bomba no explosiva que causa una onda de electricidad que afecta a los oponentes...",
+    "usable-cantidad": false,
+    "stats": {
+      "ataque": 75,
+      "precision": 45
+    },
+    "efectivo": ["roedores", "golems"],
+    "usable": true,
+    "categoria": ["arma"],
+    "frases": {
+      "usando": "Lanzas la bomba voltio y retrocedes a una distancia segura.",
+      "exito": "Dicha bomba se activa lastimando al contrincante... Posiblemente quede en paralisis",
+      "fallido": "El contrincante evade tu bomba voltio."
+    },
+    "efectos": [{ "nombre-efecto": "Paralisis", "duracion": 5 }],
+    "estado": "Despues de su uso, la bomba voltio se desactiva y queda inutilizable..."
+  },
+  {
+    "item": "Trampa de queso",
+    "descripcion": "Trampa de madera con composiciones de hierro que tiene como cebo un trozo de queso.\nHay roedores que no tienen de otra con que comer...",
+    "usable-cantidad": false,
+    "stats": {
+      "ataque": 35,
+      "precision": 20
+    },
+    "efectivo": ["roedores"],
+    "usable": true,
+    "categoria": ["trampa", "arma"],
+    "frases": {
+      "usando": "Colocas la trampa en el suelo... Te aseguras de que caiga bien",
+      "exito": "La trampa se activa causando un daño despavorable",
+      "fallido": "La trampa activa antes de tiempo y alerta al oponente"
+    },
+    "estado": "La trampa se queda sin cebo y el resorte activador se rompe..."
+  }
+]

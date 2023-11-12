@@ -6,7 +6,8 @@
     "{generoPalabra-despertar}": "despierto",
     "{generoPalabra-distraer}": "distraido",
     "{generoPalabra-ropaje}": "bermuda",
-    "{generoPalabra-listo}": "listo"
+    "{generoPalabra-listo}": "listo",
+    "{generoPalabra-tonto}": "tonto"
   },
   "female": {
     "{generoPalabra-mimar}": "mimada",
@@ -15,6 +16,7 @@
     "{generoPalabra-despertar}": "despierta",
     "{generoPalabra-distraer}": "distraida",
     "{generoPalabra-ropaje}": "vestido",
-    "{generoPalabra-listo}": "lista"
+    "{generoPalabra-listo}": "lista",
+    "{generoPalabra-tonto}": "tonta"
   }
 }

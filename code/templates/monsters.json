@@ -44,7 +44,7 @@
         "ataque": 10,
         "nivel": 2
       },
-      "imune": ["Vara de madera", "Sandalias"],
+      "imune": ["Rama", "Sandalias"],
       "debilidad": ["Bomba voltio", "Trampa de queso", "Pegamento industrial"],
       "recompensa": {
         "exp": 15,
