@@ -257,7 +257,31 @@ class ProcesarEleccion:
     def darElecciones(self):
         if self.ese == "casa":
             if self.choice == 1:
-                pass
+                os.system("cls")
+                lugares = ["patio", "dormitorio", "cocina", "salida"]
+                eleccion = ""
+                while eleccion not in lugares:    
+                    print("¿A donde te dirigirás?")
+                    for i in range(len(lugares)):
+                        print(f"[{(i + 1)}] {lugares[i]}", end=" ")
+                    print("\n\n")
+                    eleccion = str(input(">>> "))
+                    if eleccion not in lugares:
+                        print("Ese lugar no existe, ¡Elige uno valido!")
+                        m.anyKey2Continue()
+                    else:
+                        os.system("cls")
+                        pos = lugares.index(eleccion)
+                        if lugares[pos] == "salida":
+                            return 4
+                        if lugares[pos] == "patio":
+                            return 2
+                        if lugares[pos] == "dormitorio":
+                            return 1
+                        if lugares[pos] == "cocina":
+                            return 5
+                        pass
+                    
             if self.choice == 2:
                 os.system("cls")
                 ply = self.dataPlayer["nombre"]
@@ -300,6 +324,8 @@ class ProcesarEleccion:
                 return
             if self.choice == 4:
                 exit(0)
+        if self.ese == "patio":
+            pass
 
 
 class CargarPartida:
@@ -319,7 +345,7 @@ class CargarPartida:
                         d[i] = self.partida[i]
                 data = json.dump(d, f)
             with open(self.temp, 'r') as f:
-                data = json.load(f)  
+                data = json.load(f)
         else:
             with open(self.temp, 'w') as f:
                 d = {}

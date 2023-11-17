@@ -80,6 +80,7 @@ class EscenarioCasa:
             "Vuelves a tu habitación. No se por que volveras pero ahí vas",
             "Bajas al sotano. Revisas algunas cajas, te aburres y retornas a la sala.",
             "Retomas tu rumbo tomando tu morral y estás {generoPalabra-listo} para ir a la escuela.",
+            "Regresas a la cocina, no haces nada... retornas."
         ]
         self.elecciones = ["Explorar", "Hablar", "Inventario", "Opciones"]
 
@@ -121,7 +122,26 @@ class EscenarioCasa:
             print("[1] Explorar\n[2] Hablar\n[3] Inventario\n[4] Opciones")
             elec = int(input("\n>>> "))
             if elec == 1:
-                pass
+                sis = c.ProcesarEleccion(ese, self.playerData, elec)
+                i = sis.darElecciones()
+                os.system("cls")
+                if i == 4:
+                    print(self.eventos[i])
+                    m.setTimeout(2)
+                    print("\nEl sol es perfecto junto con el frio del ambiente dan una neutralidad balanceada")
+                    m.setTimeout(3)
+                    m.anyKey2Continue()
+                    print("Te dirijes al parque, el primer lugar que se te cruza durante tu viaje a la escuela...")
+                    m.setTimeout(2)
+                    m.anyKey2Continue()
+                    eve = c.DarEvento("parque")
+                    eve.registrarEventoTemporal(main.tempPath)
+                    m.anyKey2Continue()
+                    guar = c.GuardarPartida(self.playerData, "parque", None)
+                    guar.compararDatos()
+                else:
+                    print(self.eventos[i])
+                    m.anyKey2Continue()
             if elec == 2:
                 os.system("cls")
                 sis = c.ProcesarEleccion(ese, self.playerData, elec)
@@ -140,6 +160,15 @@ class EscenarioCasa:
         else:
             m.anyKey2Continue()
             exit(0)
-            pass
 
 # tercer escenario
+
+class EscenarioParque:
+    def __init__(self, playerData: object):
+        self.playerData = playerData
+        self.dialogos = [""]
+        self.rutas = [""]
+        
+    def EleccionRutas(self):
+        ese = "parque"
+        exit(0)

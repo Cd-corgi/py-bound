@@ -26,3 +26,7 @@ class DetectarZonaGuardado:
             if self.playerData["lugarDeGuardado"]["lugar"] == "casa" and self.playerData["listaDeEventos"][-1] == "introduccion":
                 os.system("cls")
                 intro(self.playerData)
+                
+            if self.playerData["lugarDeGuardado"]["lugar"] == "parque" and self.playerData["listaDeEventos"][-1] == "paque":
+                os.system("cls")
+                park(self.playerData)

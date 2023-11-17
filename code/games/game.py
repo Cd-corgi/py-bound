@@ -2,7 +2,7 @@ import msvcrt as keyb
 import os
 from colorama import *
 import json
-from code.clases import *
+import code.clases as cl
 import code.stages.maps as c
 import code.functions as contar
 
@@ -12,11 +12,21 @@ def cargarTempDatos():
         data = json.load(file)
     return data
 
+def park(playerData):
+    if playerData["listaDeEventos"][-1] == "parque":
+        yes = c.EscenarioParque(playerData)
+        yes.EleccionRutas()
+        pass
+    else:
+        print("Error: No deberias estar aqui")
+        print("Lefting Event!")
+        exit(0)
+
 def intro(playerData):
     if playerData["listaDeEventos"][-1] == "introduccion":
         epi1 = c.EscenarioCasa(playerData)
         epi1.EleccionRutas()
-        contar.anyKey2Continue()
+        park(playerData)
     else:
         print("Error: No deberias estar aqui")
         print("Lefting Event!")
@@ -51,7 +61,7 @@ def mGame():
         print("Sientes que un frio misterioso te rodea y todo a tu alrededor se congela al punto de volverte un tempano", end="")
         contar.puntsus(0.5)
         contar.anyKey2Continue()
-        eve = c.DarEvento("suenoInicial")
+        eve = cl.DarEvento("suenoInicial")
         eve.registrarEventoTemporal('./code/temp/currentP.json')
         newDat = cargarTempDatos()
         dreaming(newDat)
