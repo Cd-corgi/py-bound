@@ -259,7 +259,7 @@ class ProcesarEleccion:
                 os.system("cls")
                 lugares = ["patio", "dormitorio", "cocina", "salida"]
                 eleccion = ""
-                while eleccion not in lugares:    
+                while eleccion not in lugares:
                     print("¿A donde te dirigirás?")
                     for i in range(len(lugares)):
                         print(f"[{(i + 1)}] {lugares[i]}", end=" ")
@@ -280,7 +280,7 @@ class ProcesarEleccion:
                         if lugares[pos] == "cocina":
                             return 5
                         pass
-                    
+
             if self.choice == 2:
                 os.system("cls")
                 ply = self.dataPlayer["nombre"]
