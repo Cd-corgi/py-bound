@@ -136,8 +136,9 @@ class EscenarioCasa:
                     m.anyKey2Continue()
                     eve = c.DarEvento("parque")
                     eve.registrarEventoTemporal(main.tempPath)
-                    m.anyKey2Continue()
-                    guar = c.GuardarPartida(self.playerData, "parque", None)
+                    with open(main.tempPath, 'r') as f:
+                        datos = json.load(f)
+                    guar = c.GuardarPartida(datos, "parque", None)
                     guar.compararDatos()
                 else:
                     print(self.eventos[i])

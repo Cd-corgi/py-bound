@@ -202,8 +202,6 @@ class GuardarPartida:
                     for x in datosDeTemp:
                         consult.update_one({"nombre": datosDeTemp["nombre"]}, {
                                            "$set": {x: datosDeTemp[x]}})
-                    # Borra el viejo estado
-                    os.remove(main.tempPath)
                     # Busca el jugador apenas guardado
                     yes = consult.find({})
                     # Actualiza el temporal
@@ -212,6 +210,7 @@ class GuardarPartida:
                         for s in i:
                             if s != "_id":
                                 nuevoT[s] = i[s]
+                    # Reemplaza el viejo por el nuevo estado
                     with open(main.tempPath, 'w') as f:
                         data = json.dump(nuevoT, f)
                     # Termina la sobreescritura de los datos...
